@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { BrowserRouter } from "react-router-dom";
+
+import App from './shared/App';
 import reportWebVitals from './reportWebVitals';
+import store from "./redux/configStore";
+import { Provider } from "react-redux";
+
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  //BrowserRouter -> 웹브라우저가 가지고 있는 주소관련정보를 props로 넘겨줌
+    <Provider store={store}>
+      <App />
+    </Provider>,
   document.getElementById('root')
 );
 

@@ -11,10 +11,10 @@ const Header = () => {
                 </HeaderBox>
                 <BtnBox>
                     <Button>
-                    Sign Up
+                    SignUp
                     </Button>
                     <Button>
-                        Log In
+                        LogIn
                     </Button>        
                 </BtnBox>
                     
@@ -26,26 +26,47 @@ const Header = () => {
 
 const HeaderWrap = styled.div`
     width: 100%;
+    padding:10px;
+    margin:10px auto;
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid lightgray;
 `;
 
 const HeaderBox = styled.div`
-    width:100%;
+    width:80%;
+    margin:0px auto;
+    padding-left:10px;
+    
 `;
 
 const Logo = styled.div`
+    font-weight: 800;
     color:purple;
+    font-size: 2.2vw;
+
 `;
 
 const BtnBox = styled.div`
-    width:100%;
+    width:20%;
+    display:flex;
+    justify-content:space-evenly;
+
 `;
 
 const Button = styled.div`
-    color: yellow;
-    background-color:purple;
+    width:50px;
+    margin:10px 0; 
+    padding:4px;
+    text-align:center;
+    font-weight: 800;
+    color: purple;
+    border:1px soild purple;
+    border-radius: 4px;
+    cursor: pointer;
     &:hover{
         color:purple;
-        background-color:yellow;
+        border-bottom:2px dashed lightpink;
     }
 `;
 
