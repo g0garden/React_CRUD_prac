@@ -1,24 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = () => {
+import {history } from "../redux/configStore"
+
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators as userActions } from '../redux/modules/user';
+
+
+const Header = (props) => {
+
+    const dispatch = useDispatch('');
+    const userInfo = useSelector((state) => state.user.user);
 
     return (
         <React.Fragment>
             <HeaderWrap>
                 <HeaderBox>
-                    <Logo>CRUD</Logo>
+                    <Logo
+                        onClick={() => {
+                            history.push('/')
+                        }}>CRUD</Logo>
                 </HeaderBox>
+                {userInfo? (
+                    <BtnBox>
+                    <Button
+                        onClick={() =>{
+                            history.push('/signup')
+                        }}>
+                    {userInfo?.username}
+                    </Button>
+                    <Button onClick={() =>{
+                        dispatch(userActions.logoutAPI())}}>
+                        logout
+                    </Button>        
+                </BtnBox>
+                ): (
                 <BtnBox>
-                    <Button>
+                    <Button onClick={() =>{history.push('/signup')}}>
                     SignUp
                     </Button>
-                    <Button>
+                    <Button onClick={() =>{history.push('/login')}}>
                         LogIn
                     </Button>        
                 </BtnBox>
-                    
-                
+                )}
             </HeaderWrap>
         </React.Fragment>
     );
@@ -44,7 +69,7 @@ const Logo = styled.div`
     font-weight: 800;
     color:purple;
     font-size: 2.2vw;
-
+    cursor: pointer;
 `;
 
 const BtnBox = styled.div`
